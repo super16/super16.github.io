@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&family=Source+Sans+Pro:wght@600;700&display=swap");
+
+body {
+  background-image: url("../images/background.gif");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+.page-wrap {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.main-text {
+  color: Snow;
+  font-size: 96px;
+  text-shadow: 4px 4px 1px red;
+}
+
+@media (max-width: 480px) {
+  .main-text {
+    font-size: 64px;
+    text-shadow: 2px 2px 1px red;
+  }
+}
