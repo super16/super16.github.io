@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}" />
+    <script src="{{ 'assets/js/script.js' | relative_url }}"></script>
+    <link
+      rel="icon"
+      href="{{ 'assets/favicon.ico' | relative_url }}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-row">
+        <div class="header-logo">
+          <a href="/" class="logo">Super16</a>
+        </div>
+        <a href="javascript:void(0);" class="toggle">
+          <svg viewBox="0 0 85 71" onclick="toggle()">
+            <rect y="0" x="0" height="15" width="85" />
+            <rect y="28" x="0" height="15" width="85" />
+            <rect y="56" x="0" height="15" width="85" />
+          </svg>
+        </a>
+      </div>
+      <nav class="nav-bar" id="toggle-nav-bar">
+        <div class="nav-bar-item">
+          <a href="/about-me">About</a>
+        </div>
+        <div class="nav-bar-item">
+          <a href="/projects">Projects</a>
+        </div>
+        <div class="nav-bar-item">
+          <a href="/notes">Notes</a>
+        </div>
+      </nav>
+    </header>
+    <main>{{ content }}</main>
+    <footer>
+      <div class="footer-links">
+        <div class="link-item">
+          <a href="/">Main page</a>
+        </div>
+        <div class="link-item">
+          <a href="/about-me">About</a>
+        </div>
+        <div class="link-item">
+          <a href="/projects">Projects</a>
+        </div>
+        <div class="link-item">
+          <a href="/notes">Notes</a>
+        </div>
+      </div>
+      <p>Super16, {{ 'now' | date: "%Y" }}</p>
+    </footer>
+  </body>
+</html>
