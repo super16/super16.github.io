@@ -121,13 +121,14 @@ main .error a.error-button:hover {
   color: #d6d4dc;
 }
 main h1 {
-  font-size: 70px;
+  font-size: 46px;
   margin: 25px auto;
   text-align: center;
+  word-wrap: break-word;
 }
 main h2 {
-  font-size: 48px;
-  margin: 25px auto;
+  font-size: 32px;
+  margin: 45px auto 5px auto;
 }
 main h2 a {
   color: #d6d4dc;
@@ -136,11 +137,49 @@ main h2 a {
 main h2 a:hover {
   color: #a63e14;
 }
+main h3 {
+  font-size: 28px;
+  margin: 45px auto 5px auto;
+}
 main p {
   font-size: 24px;
+  line-height: 1.3;
 }
 main p.centered-text {
   text-align: center;
+}
+main p.function {
+  text-align: center;
+}
+main p.date {
+  font-size: small;
+  margin: 0;
+}
+main ul {
+  padding-left: 1.5em;
+}
+main ul li {
+  list-style-type: square;
+  font-size: 24px;
+}
+main ul li p {
+  font-size: 24px;
+}
+main ul li a {
+  color: #d6d4dc;
+  font-size: 24px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+main ul li a:hover {
+  text-decoration-color: #a63e14;
+}
+main ul li p a {
+  color: #d6d4dc;
+  text-decoration: none;
+}
+main ul li p a:hover {
+  color: #a63e14;
 }
 nav {
   display: none;
@@ -340,6 +379,12 @@ nav.nav-bar.responsive .nav-bar-item a:hover {
   }
   main p.centered-text {
     text-align: left;
+  }
+  main ul {
+    padding-left: 2em;
+  }
+  main ul li p {
+    font-size: 20px;
   }
   nav {
     display: initial;

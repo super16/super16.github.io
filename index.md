@@ -15,7 +15,7 @@ title: Super16 Personal Page
 
 {% for note in sorted %}
 
-- {{ note.date | date: "%d/%m/%Y" }} [{{ note.title }}]({{ note.url }})
+- {{ note.date | date: "%d/%m/%Y" }} \| [{{ note.title }}]({{ note.url }})
 
 {% endfor %}
 

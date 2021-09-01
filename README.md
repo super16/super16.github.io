@@ -2,9 +2,7 @@
 
 Personal page with projects and notes.
 
-Built with:
-
-- [Jekyll](https://jekyllrb.com/)
+Built with [Jekyll](https://jekyllrb.com/).
 
 ## Run Jekyll
 

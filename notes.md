@@ -11,7 +11,9 @@ title: Notes
 
 ## [{{ note.title }}]({{ note.url }})
 
-{{ note.date | date: "%d/%m/%Y" }}
+{% include notes-date.html %}
+
+{{ note.snippet }}
 
 {% endfor %}
 
