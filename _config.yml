@@ -12,9 +12,9 @@ collections:
   notes:
     output: true
     permalink: /:collection/:slug
-  projects:
-    output: true
-    permalink: /:collection/:slug
+
+plugins:
+  - jekyll-sitemap
 
 exclude:
   - 'README.md'

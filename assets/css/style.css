@@ -149,16 +149,25 @@ main p.centered-text {
   text-align: center;
 }
 main p.function {
+  font-size: 20px;
   text-align: center;
+  white-space: normal;
 }
 main p.date {
   font-size: small;
   margin: 0;
 }
+main p img {
+  display: block;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
 main ul {
   padding-left: 1.5em;
 }
 main ul li {
+  line-height: 1.3;
   list-style-type: square;
   font-size: 24px;
 }
@@ -202,6 +211,23 @@ nav.nav-bar.responsive .nav-bar-item a {
 }
 nav.nav-bar.responsive .nav-bar-item a:hover {
   color: #d6d4dc;
+}
+p a {
+  color: #d6d4dc;
+  font-size: 24px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+p a:hover {
+  text-decoration-color: #a63e14;
+}
+p code {
+  border: solid rgba(214, 212, 220, 0.5);
+  border-radius: 5px;
+  border-width: 0.5px;
+  color: #d6d4dc;
+  background-color: rgba(214, 212, 220, 0.2);
+  padding: 1px;
 }
 @media (min-width: 768px) and (max-width: 950px) {
   footer {
@@ -345,7 +371,7 @@ nav.nav-bar.responsive .nav-bar-item a:hover {
     display: none;
   }
   main {
-    padding: 40px 30%;
+    padding: 40px 30% 7% 30%;
   }
   main .buttons-group {
     display: flex;
@@ -376,14 +402,28 @@ nav.nav-bar.responsive .nav-bar-item a:hover {
   }
   main p {
     font-size: 20px;
+    line-height: 1.5;
   }
   main p.centered-text {
     text-align: left;
+  }
+  main p.function {
+    font-size: 24px;
   }
   main ul {
     padding-left: 2em;
   }
   main ul li p {
+    font-size: 20px;
+  }
+  main ul li {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  main ul li p {
+    font-size: 20px;
+  }
+  main ul li a {
     font-size: 20px;
   }
   nav {
@@ -405,5 +445,8 @@ nav.nav-bar.responsive .nav-bar-item a:hover {
   }
   nav.nav-bar .nav-bar-item a:hover {
     color: #d6d4dc;
+  }
+  p a {
+    font-size: 20px;
   }
 }
