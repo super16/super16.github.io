@@ -1,6 +1,7 @@
 ---
 permalink: /
 title: Super16 Personal Page
+meta_google: true
 ---
 
 # Hi! I'm Mark

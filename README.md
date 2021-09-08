@@ -4,7 +4,7 @@ Personal page with projects and notes.
 
 Built with [Jekyll](https://jekyllrb.com/).
 
-## Run Jekyll
+## Run Jekyll (Development)
 
 ```bash
 bundle exec jekyll serve
