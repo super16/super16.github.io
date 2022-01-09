@@ -10,6 +10,10 @@ snippet: "The project is released."
 
 **{{ page.date | date: "%d/%m/%Y" }}**
 
+* * *
+
+* * *
+
 Web Oscilloscope is an Vue.js single-page application to display following kinds
 of waves with white noise:
 
@@ -20,7 +24,9 @@ of waves with white noise:
 
 Link to [Live demo](/web-oscilloscope "web-oscilloscope Application").
 
-![Web Oscilloscope](/assets//img/canvas.png)
+![Web Oscilloscope](/assets/img/canvas.png)
+
+* * *
 
 ## Abstract
 
@@ -67,9 +73,10 @@ The mathematical function of saw wave is as follows:
 
 {% include saw-wave.html %}
 
+* * *
+
 ## Things to Do
 
 * Add documentation to the code
 * Unit tests
 * Wave filters & modulators
-* Maybe TypeScript support
