@@ -9,11 +9,9 @@ title: Notes
 
 {% for note in sorted %}
 
-## [{{ note.title }}]({{ note.url }})
+- **[{{ note.title }}]({{ note.url }})** {% include notes-date.html %}
 
-{% include notes-date.html %}
-
-{{ note.snippet }}
+    <small>{{ note.snippet }}</small>
 
 {% endfor %}
 

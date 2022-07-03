@@ -1,22 +1,24 @@
 ---
 permalink: /
-title: Super16 Personal Page
-meta_google: true
+title: Hi! I’m Mark
+index_page: true
+meta: super16 personal page
 ---
 
 # Hi! I'm Mark
 
-{% include introduction.html %}
+I am a fullstack software developer with
+extensive technical writing experience.
+I’m interested in computational linguistics,
+web technologies and the humanities.
 
-{% include buttons.html %}
-
-## [Notes](/notes)
+## Latest notes
 
 {% assign sorted = site.notes | reverse | slice: 0, 9 %}
 
 {% for note in sorted %}
 
-- {{ note.date | date: "%d/%m/%Y" }} \| [{{ note.title }}]({{ note.url }})
+- **[{{ note.title }}]({{ note.url }})** <small>{{ note.date | date: "%d/%m/%Y" }}</small>
 
 {% endfor %}
 

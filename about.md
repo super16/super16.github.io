@@ -5,4 +5,4 @@ title: About me
 
 # About me
 
-{% include will-follow-soon.html %}
+*Will follow soon.*

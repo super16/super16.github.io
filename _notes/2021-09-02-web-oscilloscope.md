@@ -12,8 +12,6 @@ snippet: "The project is released."
 
 * * *
 
-* * *
-
 Web Oscilloscope is an Vue.js single-page application to display following kinds
 of waves with white noise:
 

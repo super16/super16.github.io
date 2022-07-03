@@ -1,0 +1,274 @@
+$breakpoint-small: 768px;
+$breakpoint-medium: 951px;
+$breakpoint-large: 1400px;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  @media (min-width: $breakpoint-small) and (max-width: ($breakpoint-large - 1)) {
+    border: 6px solid black;
+    box-shadow: 12px 12px black;
+    margin: 60px 100px 60px 100px;
+    padding: 30px 25px 30px 25px;
+    max-width: 70%;
+    width: 70%;
+    height: auto;
+  }
+
+  @media (min-width: $breakpoint-large){
+    border: 6px solid black;
+    box-shadow: 12px 12px black;
+    margin: 60px 100px 60px 100px;
+    padding: 30px 25px 30px 25px;
+    max-width: 45%;
+    width: 45%;
+    height: auto;
+  }
+  
+  header {
+    align-items: center;
+    border-bottom: 12px solid black;
+    display: flex;
+    flex-flow: wrap;
+    margin: 20px 25px;
+    padding-bottom: 5px;
+
+    a {
+      color: black;
+      font-family: "Montserrat", sans-serif;
+      font-size: 48px;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #800000;
+    }
+
+    .spacer {
+      flex-grow: 1;
+  
+      @media (min-width: $breakpoint-large) {
+        display: none;
+      }
+    }
+
+    svg {
+      fill: black;
+
+      @media (min-width: $breakpoint-large) {
+        display: none;
+      }
+    }
+
+    svg:hover {
+      cursor: pointer;
+      fill: #800000;
+    }
+
+    hr {
+      clear: both;
+      margin: 0;
+      visibility: hidden;
+      width: 100%;
+
+      @media (min-width: $breakpoint-large) {
+        display: none;
+      }
+    }
+
+    nav {
+      display: none;
+
+      &.responsive {
+        display: flex;
+        flex-direction: column;
+      }
+
+      ul {
+        padding-left: 0;
+
+        @media (min-width: $breakpoint-large) {
+          display: flex;
+          gap: 24px;
+          margin: 0;
+        }
+
+        li {
+          font-size: 16px;
+          list-style: none inside none;
+          padding: 6px 0 6px 0;
+
+          a {
+            color: black;
+            font-family: "Heebo", sans-serif;
+            font-size: 32px;
+            font-weight: 400;
+            text-decoration: none;
+          }
+          
+          a:hover {
+            color: #800000;
+          }
+        }
+      }
+
+      @media (min-width: $breakpoint-large) {
+        display: flex;
+        margin-left: 32px;
+      }
+    }
+  }
+
+  main {
+    flex-grow: 1;
+    margin: 20px 25px;
+
+    h1 {
+      font-family: "Heebo", sans-serif;
+      font-size: 72px;
+      line-height: 1.1;
+      margin: 0;
+      word-break: break-word;
+    }
+
+    h2 {
+      font-family: "Heebo", sans-serif;
+      font-size: 48px;
+      line-height: 1.1;
+      margin: 30px 0 0 0;
+    }
+
+    h3 {
+      font-family: "Heebo", sans-serif;
+      font-size: 36px;
+      line-height: 1.1;
+      margin: 24px 0 0 0;
+    }
+
+    hr {
+      border: 3px solid #301934;
+    }
+    
+    img {
+      display: block;
+      margin: auto;
+      max-height: 100%;
+      max-width: 100%;
+    }
+
+    p {
+      color: #301934;
+      font-family: 'EB Garamond', serif;
+      font-size: 26px;
+      word-break: break-word;
+
+      &.function {
+        font-size: 32px;
+        overflow-x: auto;
+        text-align: center;
+        word-break: break-word;
+      }
+
+      a {
+        color: black;
+      }
+
+      a:hover {
+        color: #800000;
+      }
+
+      code {
+        color: #800000;
+        font-size: 20px;
+      }
+    }
+
+    ul {
+      padding-left: 0;
+      
+      li {
+        border-bottom: 1px solid black;
+        font-family: 'EB Garamond', serif;
+        font-size: 24px;
+        list-style-type: none;
+        margin: 0 0;
+        text-align: left;
+
+        a {
+          color: black;
+        }
+      
+        a:hover {
+          color: #800000;
+        }
+
+        code {
+          color: #800000;
+          font-size: 20px;
+        }
+
+        p {
+          border-bottom: 1px solid black;
+          font-family: "Heebo", sans-serif;
+          font-size: 24px;
+          margin: 0 0;
+
+          a {
+            color: black;
+            text-decoration: none;
+          }
+        
+          a:hover {
+            color: #800000;
+          }
+
+          small {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    background-color: black;
+    color: white;
+    font-family: "Heebo", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 5px 25px;
+
+    nav {
+
+      ul {
+        display: flex;
+        gap: 15px;
+        list-style-type: none;
+        padding-left: 1em;
+
+        li {
+
+          a {
+            color: white;
+            text-decoration: none;
+          }
+
+          a:hover {
+            color: #800000;
+          }
+        }
+      }
+    }
+
+    p {
+      font-family: "Montserrat", sans-serif;
+      text-align: right;
+    }
+
+    @media (min-width: $breakpoint-small) {
+      display: none;
+    }
+  }
+}

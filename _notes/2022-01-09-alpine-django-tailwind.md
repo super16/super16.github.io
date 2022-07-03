@@ -10,8 +10,6 @@ snippet: "How to make your web pages more dynamic at client-side."
 
 * * *
 
-* * *
-
 Let's pretend that you need a modern and pretty mobile-first website created
 with Django but it should have interactive interfaces for header navigation menu
 and other things. Server-side rendered Django template system doesn't have such

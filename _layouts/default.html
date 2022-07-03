@@ -3,62 +3,72 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
-    <title>{{ page.title }}</title>
+    <title>{{ page.title }} | super16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+      html {
+        height: 100%;
+      }
+      @media (max-width: 768px) {
+        body {
+          height: 100%;
+        }
+      }
+    </style>    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;900&family=Montserrat:ital,wght@1,300&family=PT+Serif+Caption&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}" />
-    <script src="{{ 'assets/js/script.js' | relative_url }}"></script>
+    <script defer src="{{ 'assets/js/script.js' | relative_url }}"></script>
     <link
       rel="icon"
       href="{{ 'assets/favicon.ico' | relative_url }}"
       type="image/x-icon"
     />
-    {% if page.meta_google %}
+    {% if page.index_page %}
       <meta name="google-site-verification" content="g27JjibFDRSPFdOY8BBOLvltfsO_kwgQHxaz3tLeKIo" />
     {% endif %}
+    <meta name="description" content="{{ page.meta }}" />
   </head>
   <body>
-    <header>
-      <div class="header-row">
-        <div class="header-logo">
-          <a href="/" class="logo">Super16</a>
-        </div>
-        <a href="javascript:void(0);" class="toggle">
-          <svg viewBox="0 0 85 71" onclick="toggle()">
-            <rect y="0" x="0" height="15" width="85" />
-            <rect y="28" x="0" height="15" width="85" />
-            <rect y="56" x="0" height="15" width="85" />
-          </svg>
-        </a>
-      </div>
-      <nav class="nav-bar" id="toggle-nav-bar">
-        <div class="nav-bar-item">
-          <a href="/about-me">About</a>
-        </div>
-        <div class="nav-bar-item">
-          <a href="/projects">Projects</a>
-        </div>
-        <div class="nav-bar-item">
-          <a href="/notes">Notes</a>
-        </div>
-      </nav>
-    </header>
-    <main>{{ content }}</main>
-    <footer>
-      <div class="footer-links">
-        <div class="link-item">
-          <a href="/">Main page</a>
-        </div>
-        <div class="link-item">
-          <a href="/about-me">About</a>
-        </div>
-        <div class="link-item">
-          <a href="/projects">Projects</a>
-        </div>
-        <div class="link-item">
-          <a href="/notes">Notes</a>
-        </div>
-      </div>
-      <p>Super16, {{ 'now' | date: "%Y" }}</p>
-    </footer>
+    <div class="card">
+      <header>
+        <a class="logo" href="/">super16</a>
+        <div class="spacer"></div>
+        <svg viewBox="0 0 36 36" onclick="toggle()" aria-label="Toggle navigation menu" width="36" height="36">
+          <rect y="3" x="0" height="6" width="36" />
+          <rect y="15" x="0" height="6" width="36" />
+          <rect y="27" x="0" height="6" width="36" />
+        </svg>
+        <hr />
+        <nav id="toggle-nav-bar">
+          <ul>
+            <li><a href="/about-me">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/notes">Notes</a></li>
+          </ul> 
+        </nav>
+      </header>
+      <main>
+        {{ content }}
+      </main>
+      <footer>
+        <nav>
+          <ul>
+            <li><a href="/about-me">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/notes">Notes</a></li>
+          </ul>
+        </nav>
+        <p>super16, {{ 'now' | date: "%Y" }}</p>
+      </footer>
+    </div>
   </body>
 </html>

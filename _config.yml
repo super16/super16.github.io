@@ -2,16 +2,19 @@ title: super16.github.io
 
 url: https://super16.github.io
 
+collections:
+  notes:
+    output: true
+    permalink: /:collection/:slug
+
 defaults:
   - scope:
       path: ''
     values:
       layout: 'default'
 
-collections:
-  notes:
-    output: true
-    permalink: /:collection/:slug
-
 exclude:
   - 'README.md'
+
+sass:
+  style: compressed
