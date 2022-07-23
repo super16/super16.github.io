@@ -7,6 +7,10 @@ $breakpoint-large: 1400px;
   flex-direction: column;
   height: 100%;
 
+  @media (max-width: $breakpoint-small){
+    width: 100%;
+  }
+
   @media (min-width: $breakpoint-small) and (max-width: ($breakpoint-large - 1)) {
     border: 6px solid black;
     box-shadow: 12px 12px black;
@@ -26,7 +30,7 @@ $breakpoint-large: 1400px;
     width: 45%;
     height: auto;
   }
-  
+
   header {
     align-items: center;
     border-bottom: 12px solid black;
