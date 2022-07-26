@@ -27,11 +27,10 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}" />
     <script defer src="{{ 'assets/js/script.js' | relative_url }}"></script>
-    <link
-      rel="icon"
-      href="{{ 'assets/favicon.ico' | relative_url }}"
-      type="image/x-icon"
-    />
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     {% if page.index_page %}
       <meta name="google-site-verification" content="g27JjibFDRSPFdOY8BBOLvltfsO_kwgQHxaz3tLeKIo" />
     {% endif %}
