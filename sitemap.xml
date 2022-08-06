@@ -13,9 +13,6 @@
         <lastmod>2022-01-09T00:00:00+00:00</lastmod>
     </url>
     <url>
-        <loc>https://super16.github.io/404</loc>
-    </url>
-    <url>
         <loc>https://super16.github.io/about-me</loc>
     </url>
     <url>
@@ -29,5 +26,111 @@
     </url>
     <url>
         <loc>https://super16.github.io/web-oscilloscope</loc>
+    </url>
+    <url>
+        <loc>https://super16.github.io/punct/</loc>
+    </url>
+    <url>
+        <loc>https://super16.github.io/eliza-chatbot/</loc>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/font-family.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/font-style.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/font-weight.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/line-height.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/measure.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/text-align.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/text-decoration.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/text-transform.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/tracking.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/typography/type-scale.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/layout/basic-grid.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/layout/clearfix.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/layout/floats.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/theming/background-size.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/theming/border-radius.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/theming/box-shadow.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/theming/hovers.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/theming/opacity.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/elements/forms.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/elements/images.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/elements/links.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/elements/lists.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/vue-tachyons-directives-plugin/elements/tables.html</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://super16.github.io/eesti/</loc>
+        <lastmod>2022-08-06T00:00:00+00:00</lastmod>
     </url>
 </urlset>
