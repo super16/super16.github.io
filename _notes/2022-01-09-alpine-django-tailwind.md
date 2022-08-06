@@ -2,6 +2,7 @@
 title:  "Using Alpine.js + Tailwind CSS in Django templates"
 slug: "alpine-js-and-tailwindcss-in-django-templates"
 snippet: "How to make your web pages more dynamic at client-side."
+native: true
 ---
 
 # {{ page.title }}

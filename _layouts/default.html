@@ -27,6 +27,9 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    {% if page.native %}
+      <link rel="stylesheet" href="{{ 'assets/css/native.css' | relative_url }}">
+    {% endif %}
     {% if page.index_page %}
       <meta name="google-site-verification" content="g27JjibFDRSPFdOY8BBOLvltfsO_kwgQHxaz3tLeKIo">
     {% endif %}
