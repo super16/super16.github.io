@@ -1,6 +1,7 @@
 ---
-permalink: /projects
-title: Projects
+permalink: "/projects"
+title: "Projects"
+meta: "Full list of projects"
 ---
 
 # Projects

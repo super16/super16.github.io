@@ -1,6 +1,7 @@
 ---
-permalink: /about-me
-title: About me
+permalink: "/about-me"
+title: "About me"
+meta: "This section will follow soon."
 ---
 
 # About me

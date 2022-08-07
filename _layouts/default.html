@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      href="{{ 'assets/css/style.css' | relative_url }}"
+      rel="stylesheet"
+    >
+    {% if page.native %}
+      <link
+        href="{{ 'assets/css/native.css' | relative_url }}"
+        rel="stylesheet"
+      >
+    {% endif %}
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <title>{{ page.title }} | super16</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if page.index_page %}
+      <meta
+        name="google-site-verification"
+        content="g27JjibFDRSPFdOY8BBOLvltfsO_kwgQHxaz3tLeKIo"
+      >
+    {% endif %}
+    <meta name="description" content="{{ page.meta }}">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.meta }}">
+    <meta property="og:url" content="{{ page.permalink  | absolute_url }}">
+    <meta name="og:image" content="{{ 'assets/img/card.png' | absolute_url }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta property="twitter:description" content="{{ page.meta }}">
+    <meta name="twitter:creator" content="@doXcrimes">
+    <meta name="twitter:image" content="{{ 'assets/img/twitter-card.png' | absolute_url }}">
+    <meta name="twitter:image:alt" content="{{ page.title }}">
+    <script defer src="{{ 'assets/js/script.js' | relative_url }}"></script>
     <style>
       body {
         align-items: center;
@@ -21,26 +52,20 @@
         }
       }
     </style>
-    <link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}">
-    <script defer src="{{ 'assets/js/script.js' | relative_url }}"></script>
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    {% if page.native %}
-      <link rel="stylesheet" href="{{ 'assets/css/native.css' | relative_url }}">
-    {% endif %}
-    {% if page.index_page %}
-      <meta name="google-site-verification" content="g27JjibFDRSPFdOY8BBOLvltfsO_kwgQHxaz3tLeKIo">
-    {% endif %}
-    <meta name="description" content="{{ page.meta }}">
+    <title>{{ page.title }} | super16</title>
   </head>
   <body>
     <div class="card">
       <header>
         <a class="logo" href="/">super16</a>
         <div class="spacer"></div>
-        <svg viewBox="0 0 36 36" onclick="toggle()" aria-label="Toggle navigation menu" width="36" height="36">
+        <svg
+          viewBox="0 0 36 36"
+          onclick="toggle()"
+          aria-label="Toggle navigation menu"
+          width="36"
+          height="36"
+        >
           <rect y="3" x="0" height="6" width="36" />
           <rect y="15" x="0" height="6" width="36" />
           <rect y="27" x="0" height="6" width="36" />

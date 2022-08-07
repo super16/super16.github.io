@@ -1,6 +1,7 @@
 ---
-permalink: /notes
-title: Notes
+permalink: "/notes"
+title: "Notes"
+meta: "Full list of recent notes"
 ---
 
 # Notes

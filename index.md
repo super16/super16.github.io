@@ -1,15 +1,18 @@
 ---
-permalink: /
-title: Hi! I’m Mark
+permalink: "/"
+title: "Hey! I'm Mark"
 index_page: true
-meta: super16 personal page
+meta: "👋 Hey! I'm Mark. I am a fullstack software developer with
+  extensive technical writing experience.
+  I'm interested in computational linguistics,
+  web technologies and the humanities."
 ---
 
-# Hi! I'm Mark
+# Hey! I'm Mark
 
 I am a fullstack software developer with
 extensive technical writing experience.
-I’m interested in computational linguistics,
+I'm interested in computational linguistics,
 web technologies and the humanities.
 
 ## Latest notes

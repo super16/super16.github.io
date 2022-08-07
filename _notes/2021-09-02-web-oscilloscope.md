@@ -2,6 +2,8 @@
 title:  "Web Oscilloscope"
 slug: "web-oscilloscope"
 snippet: "The project is released."
+meta: "Web Oscilloscope is an Vue.js single-page application to display different kinds
+  of waves with white noise."
 ---
 
 {% include mathjax.html %}
