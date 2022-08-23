@@ -10,7 +10,7 @@ meta: "Web Oscilloscope is an Vue.js single-page application to display differen
 
 # {{ page.title }}
 
-**{{ page.date | date: "%d/%m/%Y" }}**
+**Posted {{ page.date | date: "%B %d, %Y" }}**
 
 * * *
 

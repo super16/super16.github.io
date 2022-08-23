@@ -36,6 +36,23 @@
     <meta name="twitter:image" content="{{ 'assets/img/twitter-card.png' | absolute_url }}">
     <meta name="twitter:image:alt" content="{{ page.title }}">
     <script defer src="{{ 'assets/js/script.js' | relative_url }}"></script>
+    {% if page.collection == 'notes' %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{ page.title }}",
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "dateModified": "{{ page.date | date_to_xmlschema }}",
+        "description": "{{ page.meta }}",
+        "author": [{
+          "@type": "Person",
+          "name": "super16",
+          "url": "https://super16.github.io/"
+        }]
+      }
+    </script>
+    {% endif %}
     <style>
       body {
         align-items: center;
@@ -80,7 +97,13 @@
         </nav>
       </header>
       <main>
-        {{ content }}
+        {% if page.collection == 'notes' %}
+          <article>
+            {{ content }}
+          </article>
+        {% else %}
+          {{ content }}
+        {% endif %}
       </main>
       <footer>
         <nav>

@@ -9,7 +9,7 @@ meta: "A guide how to use Alpine.js + Tailwind CSS in Django templates as minifi
 
 # {{ page.title }}
 
-**{{ page.date | date: "%d/%m/%Y" }}**
+**Posted {{ page.date | date: "%B %d, %Y" }}**
 
 * * *
 

@@ -7,7 +7,7 @@ meta: "Initial note. Here's my blog with my thoughts, news and research sketches
 
 # {{ page.title }}
 
-**{{ page.date | date: "%d/%m/%Y" }}**
+**Posted {{ page.date | date: "%B %d, %Y" }}**
 
 * * *
 
