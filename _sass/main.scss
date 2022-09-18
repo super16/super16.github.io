@@ -3,6 +3,7 @@ $breakpoint-medium: 951px;
 $breakpoint-large: 1400px;
 
 @font-face {
+  font-display: swap;
   font-family: 'Heebo';
   font-style: normal;
   font-weight: 400;
@@ -12,6 +13,7 @@ $breakpoint-large: 1400px;
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Heebo';
   font-style: normal;
   font-weight: 900;
@@ -21,6 +23,7 @@ $breakpoint-large: 1400px;
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Montserrat';
   font-style: italic;
   font-weight: 300;
@@ -30,6 +33,7 @@ $breakpoint-large: 1400px;
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'EB Garamond';
   font-style: normal;
   font-weight: 400;
