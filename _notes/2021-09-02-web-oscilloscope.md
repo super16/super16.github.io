@@ -22,7 +22,7 @@ of waves with white noise:
 * [Triangular Wave](#triangular-wave "Triangular Wave Function")
 * [Saw Wave](#saw-wave "Saw Wave Function")
 
-Link to [Live demo](/web-oscilloscope "web-oscilloscope Application").
+Link to [Live demo](/web-oscilloscope/ "web-oscilloscope Application").
 
 ![Web Oscilloscope](/assets/img/canvas.png)
 
