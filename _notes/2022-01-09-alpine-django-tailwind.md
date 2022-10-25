@@ -77,125 +77,124 @@ Thereafter create Django project and fill it with views, urls and templates as u
 
 1. Start Django project.
 
-    ```bash
-    django-admin startproject django_alpine_tailwindcss
-    cd django_alpine_tailwindcss
-    ```
+   ```bash
+   django-admin startproject django_alpine_tailwindcss
+   cd django_alpine_tailwindcss
+   ```
 
 2. Verify your new project works, run the development server. When the development
 server is running, visit <http://localhost:8000> and you'll see the default generic page
 with congratulations.
 
-    ```bash
-    python manage.py runserver
-    ```
+   ```bash
+   python manage.py runserver
+   ```
 
 3. Start new Django application `tables` where we'll store basic MVC structure.
 
-    ```bash
-    python manage.py startapp tables
-    ```
+   ```bash
+   python manage.py startapp tables
+   ```
 
 4. Register new application in `django_alpine_tailwindcss/settings.py`.
 
-    ```python
-    # Application definition
+   ```python
+   # Application definition
 
-    INSTALLED_APPS = [
-        # Here
-        'tables.apps.TablesConfig',
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-    ]
-    ```
+   INSTALLED_APPS = [
+       # Here
+       'tables.apps.TablesConfig',
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+   ]
+   ```
 
 5. Create views for index and countries pages in `tables/views.py` module
 with generic `TemplateView` and `ListView` classes. At this moment we don't need
 any other logic here except template name to use.
 
-    ```python
-    from django.views.generic.list import ListView
-    from django.views.generic import TemplateView
+   ```python
+   from django.views.generic.list import ListView
+   from django.views.generic import TemplateView
 
 
-    class CountriesListView(ListView):
-        template_name = 'countries.html'
+   class CountriesListView(ListView):
+       template_name = 'countries.html'
 
 
-    class IndexView(TemplateView):
-        template_name = 'index.html'
-    ```
+   class IndexView(TemplateView):
+       template_name = 'index.html'
+   ```
 
 6. Create `tables/urls.py`.
 
-    ```bash
-    touch tables/urls.py
-    ```
+   ```bash
+   touch tables/urls.py
+   ```
 
 7. Add URL dispatcher for tables app in created `tables/urls.py` and
 register `IndexView` and `CountriesListView` as available views.
 
-    ```python
-    from django.urls import path
-    
-    from .views import CountriesListView, IndexView
+   ```python
+   from django.urls import path
 
-    urlpatterns = [
-        path('', IndexView.as_view(), name='index'),
-        path('countries', CountriesListView.as_view(), name='countries'),
-    ]
-    ```
+   from .views import CountriesListView, IndexView
+
+   urlpatterns = [
+       path('', IndexView.as_view(), name='index'),
+       path('countries', CountriesListView.as_view(), name='countries'),
+   ]
+   ```
 
 8. Include `tables/urls.py` in global `django_alpine_tailwindcss/urls.py`
 URL dispatcher.
 
-    ```python
-    from django.contrib import admin
-    from django.urls import path, include # Don't forget import include
+   ```python
+   from django.contrib import admin
+   from django.urls import path, include # Don't forget import include
 
-    urlpatterns = [
-        # Here
-        path('', include('tables.urls')),
-        path('admin/', admin.site.urls),
-    ]
-    ```
+   urlpatterns = [
+       # Here
+       path('', include('tables.urls')),
+       path('admin/', admin.site.urls),
+   ]
+   ```
 
-8. Create project-shared directories for templates and for static files.
+9. Create project-shared directories for templates and for static files.
 
+   ```bash
+   mkdir templates static
+   ```
 
-    ```bash
-    mkdir templates static
-    ```
-
-7. Register path to templates in `django_alpine_tailwindcss/settings.py`. 
-
+10. Register path to templates in `django_alpine_tailwindcss/settings.py`.
+ 
     ```python
     TEMPLATES = [
         {
-            'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            # Register path to templates directory here
-            'DIRS': [BASE_DIR / 'templates'],
-            'APP_DIRS': True,
-            'OPTIONS': {
-                'context_processors': [
-                    'django.template.context_processors.debug',
-                    'django.template.context_processors.request',
-                    'django.contrib.auth.context_processors.auth',
-                    'django.contrib.messages.context_processors.messages',
-                ],
-            },
-        },
+          'BACKEND': 'django.template.backends.django.DjangoTemplates',
+          # Register path to templates directory here
+          'DIRS': [BASE_DIR / 'templates'],
+          'APP_DIRS': True,
+          'OPTIONS': {
+              'context_processors': [
+                  'django.template.context_processors.debug',
+                  'django.template.context_processors.request',
+                  'django.contrib.auth.context_processors.auth',
+                  'django.contrib.messages.context_processors.messages',
+              ],
+          },
+      },
     ]
     ```
 
     You can use application's directory for templates, later you'll see the
     simplicity of this approach for such project. 
 
-8. Add path to static files at the end of `settings.py` file.
+11. Add path to static files at the end of `settings.py` file.
 
     ```python
     STATICFILES_DIRS = [
@@ -214,18 +213,18 @@ to Django project directories.
 1. Create directory for `npm` project inside Django project
 and start `npm` project.
 
-    ```bash
-    mkdir boilerplates
-    cd boilerplates
-    npm -y init
-    ```
+   ```bash
+   mkdir boilerplates
+   cd boilerplates
+   npm -y init
+   ```
 
 2. Create basic `npm` project structure.
 
-    ```bash
-    mkdir src
-    touch src/index.js
-    ```
+   ```bash
+   mkdir src
+   touch src/index.js
+   ```
 
 ### Install Alpine.js
 
@@ -316,102 +315,102 @@ module.exports = {
 1. At first let's install basic setup for Webpack and later we expand it
 for our needs.
 
-    ```bash
-    npm install webpack webpack-cli --save-dev
-    ```
+   ```bash
+   npm install webpack webpack-cli --save-dev
+   ```
 
 2. Create file `webpack.config.js` to store Webpack configuration.
 
-    ```bash
-    touch webpack.config.js
-    ```
+   ```bash
+   touch webpack.config.js
+   ```
 
 3. Add basic configuration to `webpack.config.js`.
 
-    ```js
-    const path = require('path');
+   ```js
+   const path = require('path');
 
-    module.exports = {
-      mode: 'production',
-      entry: './src/index.js',
-      output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, '../static'),
-      },
-    };
-    ```
+   module.exports = {
+     mode: 'production',
+     entry: './src/index.js',
+     output: {
+       filename: 'index.js',
+       path: path.resolve(__dirname, '../static'),
+     },
+   };
+   ```
 
     We will use production mode right away to minify
     JavaScript files.
 
-    ```js
-    module.exports = {
-      mode: 'production',
-      ...
-    }
-    ```
+   ```js
+   module.exports = {
+     mode: 'production',
+     ...
+   }
+   ```
 
     Entry point and output filename will be the same.
 
     Also output file will be placed straightaway to
     Django static directory.
 
-    ```js
-    output: {
-      filename: 'index.js',
-      path: path.resolve(__dirname, '../static'),
-    },
-    ```
+   ```js
+   output: {
+     filename: 'index.js',
+     path: path.resolve(__dirname, '../static'),
+   },
+   ```
 
-3. Add Webpack build command to `package.json`.
+4. Add Webpack build command to `package.json`.
 
-    ```json
-    "scripts": {
-      "build": "webpack",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    }
-    ```
+   ```json
+   "scripts": {
+     "build": "webpack",
+     "test": "echo \"Error: no test specified\" && exit 1"
+   }
+   ```
 
-4. Install modules to gather and build CSS files. Our Tailwind
+5. Install modules to gather and build CSS files. Our Tailwind
 configuration requires only plain CSS and PostCSS modules.
 
-    ```bash
-    npm install --save-dev css-loader postcss-loader mini-css-extract-plugin
-    ```
+   ```bash
+   npm install --save-dev css-loader postcss-loader mini-css-extract-plugin
+   ```
 
-5. Add CSS assets rules to `webpack.config.js`. CSS and PostCSS loaders will
+6. Add CSS assets rules to `webpack.config.js`. CSS and PostCSS loaders will
 process our `style.css` file and all related stylesheets from installed Tailwind. 
 
-    ```js
-    const path = require('path');
-    const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+   ```js
+   const path = require('path');
+   const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-    module.exports = {
-      mode: 'production',
-      entry: './src/index.js',
-      plugins: [
-        new MiniCssExtractPlugin({
-          filename: 'style.css',
-        }),
-      ],
-      module: {
-        rules: [
-          {
-            test: /\.css$/i,
-            use: [
-              MiniCssExtractPlugin.loader,
-              'css-loader',
-              'postcss-loader'
-            ],
-          },
-        ],
-      },
-      output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, '../static'),
-      },
-    };
-    ```
+   module.exports = {
+     mode: 'production',
+     entry: './src/index.js',
+     plugins: [
+       new MiniCssExtractPlugin({
+         filename: 'style.css',
+       }),
+     ],
+     module: {
+       rules: [
+         {
+           test: /\.css$/i,
+           use: [
+             MiniCssExtractPlugin.loader,
+             'css-loader',
+             'postcss-loader'
+           ],
+         },
+       ],
+     },
+     output: {
+       filename: 'index.js',
+       path: path.resolve(__dirname, '../static'),
+     },
+   };
+   ```
 
 ### Create HTML templates and add them to Webpack
 
@@ -631,80 +630,80 @@ All the data is taken from Wikipedia, so it can be out of date.
 1. Add `Country` model to `tables/models.py` to store countries
 in database with fields `title`, `capital` and `population`.
 
-    ```python
-    from django.db import models
+   ```python
+   from django.db import models
 
 
-    class Country(models.Model):
-        title = models.CharField(max_length=50, unique=True)
-        capital = models.CharField(max_length=50, unique=True)
-        population = models.IntegerField()
+   class Country(models.Model):
+       title = models.CharField(max_length=50, unique=True)
+       capital = models.CharField(max_length=50, unique=True)
+       population = models.IntegerField()
 
-        class Meta:
-            verbose_name_plural = 'countries'
+       class Meta:
+           verbose_name_plural = 'countries'
 
-        def __str__(self):
-            return self.title
-    ```
+       def __str__(self):
+           return self.title
+   ```
 
 2. Migrate created model.
 
-    ```bash
-    python manage.py makemigrations tables
-    python manage.py migrate
-    ```
+   ```bash
+   python manage.py makemigrations tables
+   python manage.py migrate
+   ```
 
 3. Add data with Django shell.
 
-    ```bash
-    python manage.py shell
-    ```
+   ```bash
+   python manage.py shell
+   ```
 
     This command will start the Python interactive interpreter
     where we can add data with Django QuerySet API. Input the
     following lines one by one.
 
-    ```python
-    (InteractiveConsole)
-    >>> from tables.models import Country
-    >>> Country.objects.create(title='Danmark', capital='København', population=5850189)
-    >>> Country.objects.create(title='Deutschland', capital='Berlin', population=83190556)
-    >>> Country.objects.create(title='Eesti', capital='Tallinn', population=1330068)
-    >>> Country.objects.create(title='Latvija', capital='Rīga', population=1907675)
-    >>> Country.objects.create(title='Lietuva', capital='Vilnius', population=2775810)
-    >>> Country.objects.create(title='Polska', capital='Warszawa', population=38268000)
-    >>> Country.objects.create(title='Suomi', capital='Helsinki', population=5536146)
-    >>> Country.objects.create(title='Sverige', capital='Stockholm', population=10402070)
-    >>> Country.objects.create(title='Россия', capital='Москва', population=143759445)
-    >>> # Check that you have 9 Country objects and exit the interpreter
-    >>> Country.objects.count()
-    9
-    >>> exit()
-    ```
+   ```python
+   (InteractiveConsole)
+   >>> from tables.models import Country
+   >>> Country.objects.create(title='Danmark', capital='København', population=5850189)
+   >>> Country.objects.create(title='Deutschland', capital='Berlin', population=83190556)
+   >>> Country.objects.create(title='Eesti', capital='Tallinn', population=1330068)
+   >>> Country.objects.create(title='Latvija', capital='Rīga', population=1907675)
+   >>> Country.objects.create(title='Lietuva', capital='Vilnius', population=2775810)
+   >>> Country.objects.create(title='Polska', capital='Warszawa', population=38268000)
+   >>> Country.objects.create(title='Suomi', capital='Helsinki', population=5536146)
+   >>> Country.objects.create(title='Sverige', capital='Stockholm', population=10402070)
+   >>> Country.objects.create(title='Россия', capital='Москва', population=143759445)
+   >>> # Check that you have 9 Country objects and exit the interpreter
+   >>> Country.objects.count()
+   9
+   >>> exit()
+   ```
 
 4. Update `CountriesListView` view.
 
-    ```python
-    from django.http import JsonResponse # New import
-    from django.views.generic.list import ListView
-    from django.views.generic import TemplateView
+   ```python
+   from django.http import JsonResponse # New import
+   from django.views.generic.list import ListView
+   from django.views.generic import TemplateView
 
-    from .models import Country # Don't forget to import model
+   from .models import Country # Don't forget to import model
 
 
-    class CountriesListView(ListView):
-        model = Country # Add model
-        template_name = 'countries.html'
+   class CountriesListView(ListView):
+       model = Country # Add model
+       template_name = 'countries.html'
 
-        def get_context_data(self, **kwargs):
-            context = super().get_context_data(**kwargs)
-            context['object_list'] = JsonResponse(
-                list(self.object_list.values()), safe=False
-            ).content.decode('utf-8')
-            return context
+       def get_context_data(self, **kwargs):
+           context = super().get_context_data(**kwargs)
+           context['object_list'] = JsonResponse(
+               list(self.object_list.values()), safe=False
+           ).content.decode('utf-8')
+           return context
 
-    ...
-    ```
+   ...
+   ```
 
     Here the `Country` model added to view and new method `get_context_data`
     which override the default `object_list` context value to JSON
@@ -718,61 +717,61 @@ build template for countries page.
 
 1. Go to `boilerplates` directory and create new boilerplate `src/countries.html`.
 
-    ```bash
-    cd boilerplates
-    touch src/countries.html
-    ```
+   ```bash
+   cd boilerplates
+   touch src/countries.html
+   ```
 
 2. Here’s the ready-made layout for `countries.html` with Tailwind classes.
 
-    ```html
-    {% raw %}{% extends "base.html" %}{% endraw %}
-    {% raw %}{% block title %}Countries Around Baltic Sea{% endblock %}{% endraw %}
+   ```html
+   {% raw %}{% extends "base.html" %}{% endraw %}
+   {% raw %}{% block title %}Countries Around Baltic Sea{% endblock %}{% endraw %}
 
-    {% raw %}{% block content %}{% endraw %}
-    <main class="px-8 py-14 flex-grow" x-data="{
-      countries: {% raw %}{{ object_list }}{% endraw %},
-      order: 1,
-      sort() {
-        this.order *= -1;
-      },
-      get sortedByPopulation() {
-        return this.countries.slice(0).sort(
-          (c1, c2) => (c2.population - c1.population) * this.order
-        );
-      },
-    }">
-      <h1 class="text-5xl font-extrabold">
-        Countries Around Baltic Sea
-      </h1>
-      <table class="table-auto divide-y-2 divide-black my-8">
-        <thead class="text-left">
-          <tr>
-            <th class="px-2 py-1">Country</th>
-            <th class="px-2 py-1">Capital City</th>
-            <th class="px-2 py-1"
-              :class="order === 1 ? 'descending' : 'ascending'"
-              @click="sort">
-              Population
-            </th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-blue-400">
-          <template x-for="country in sortedByPopulation">
-            <tr>
-              <td class="px-2 py-1" 
-                x-text="country.title"></td>
-              <td class="px-2 py-1"
-                x-text="country.capital"></td>
-              <td class="px-2 py-1"
-                x-text="country.population"></td>
-            </tr>
-          </template>
-        </tbody>
-      </table>
-    </main>
-    {% raw %}{% endblock %}{% endraw %}
-    ```
+   {% raw %}{% block content %}{% endraw %}
+   <main class="px-8 py-14 flex-grow" x-data="{
+     countries: {% raw %}{{ object_list }}{% endraw %},
+     order: 1,
+     sort() {
+       this.order *= -1;
+     },
+     get sortedByPopulation() {
+       return this.countries.slice(0).sort(
+         (c1, c2) => (c2.population - c1.population) * this.order
+       );
+     },
+   }">
+     <h1 class="text-5xl font-extrabold">
+       Countries Around Baltic Sea
+     </h1>
+     <table class="table-auto divide-y-2 divide-black my-8">
+       <thead class="text-left">
+         <tr>
+           <th class="px-2 py-1">Country</th>
+           <th class="px-2 py-1">Capital City</th>
+           <th class="px-2 py-1"
+             :class="order === 1 ? 'descending' : 'ascending'"
+             @click="sort">
+             Population
+           </th>
+         </tr>
+       </thead>
+       <tbody class="divide-y divide-blue-400">
+         <template x-for="country in sortedByPopulation">
+           <tr>
+             <td class="px-2 py-1" 
+               x-text="country.title"></td>
+             <td class="px-2 py-1"
+               x-text="country.capital"></td>
+             <td class="px-2 py-1"
+               x-text="country.population"></td>
+           </tr>
+         </template>
+       </tbody>
+     </table>
+   </main>
+   {% raw %}{% endblock %}{% endraw %}
+   ```
 
     This template extends `base.html` such as `index.html`.
 
@@ -788,88 +787,88 @@ build template for countries page.
     as ternary operator. After we'll add related class rules to CSS stylesheet.
     Clicking on **Population** head cell will cause the change of sorting order.
 
-    ```html
-    <th :class="order === 1 ? 'descending' : 'ascending'" @click="sort">Population</th>
-    ```
+   ```html
+   <th :class="order === 1 ? 'descending' : 'ascending'" @click="sort">Population</th>
+   ```
 
 3. Add rules to `ascending` and `descending` class selectors in `src/styles.css`.
 
-    ```css
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
 
-    .ascending:after { 
-      content: " ▲";
-      color: rgba(59, 130, 246);
-    } 
-    .descending:after { 
-      content: " ▼";
-      color: rgba(59, 130, 246);
-    }
-    .ascending:hover::after { 
-      color: black;
-    } 
-    .descending:hover::after { 
-      color: black;
-    }
-    ```
+   .ascending:after { 
+     content: " ▲";
+     color: rgba(59, 130, 246);
+   } 
+   .descending:after { 
+     content: " ▼";
+     color: rgba(59, 130, 246);
+   }
+   .ascending:hover::after { 
+     color: black;
+   } 
+   .descending:hover::after { 
+     color: black;
+   }
+   ```
 
 4. And add another one `HtmlWebpackPlugin` constructor for
 `src/countries.html` to `webpack.config.js`.
 
-    ```js
-    ...
-      plugins: [
-        new MiniCssExtractPlugin({
-          filename: 'style.css',
-        }),
-        new HtmlWebpackPlugin({
-          filename: '../templates/base.html',
-          template: 'src/base.html',
-          inject: false,
-          minify: false,
-        }),
-        new HtmlWebpackPlugin({
-          filename: '../templates/index.html',
-          template: 'src/index.html',
-          inject: false,
-          minify: false,
-        }),
-        new HtmlWebpackPlugin({
-          filename: '../templates/countries.html',
-          template: 'src/countries.html',
-          inject: false,
-          minify: false,
-        }),
-      ],
-      ...
-    ```
+   ```js
+     ...
+     plugins: [
+       new MiniCssExtractPlugin({
+         filename: 'style.css',
+       }),
+       new HtmlWebpackPlugin({
+         filename: '../templates/base.html',
+         template: 'src/base.html',
+         inject: false,
+         minify: false,
+       }),
+       new HtmlWebpackPlugin({
+         filename: '../templates/index.html',
+         template: 'src/index.html',
+         inject: false,
+         minify: false,
+       }),
+       new HtmlWebpackPlugin({
+         filename: '../templates/countries.html',
+         template: 'src/countries.html',
+         inject: false,
+         minify: false,
+       }),
+     ],
+     ...
+   ```
 
 5. Try the new one build with webpack and check Django templates
 and static directories.
 
-    ```bash
-    npm run build
-    ```
+   ```bash
+   npm run build
+   ```
 
-    ```bash
-    ls ../templates
-    base.html  countries.html  index.html
+   ```bash
+   ls ../templates
+   base.html  countries.html  index.html
 
-    ls -lh ../static
-    total 60K
-    ```
+   ls -lh ../static
+   total 60K
+   ```
 
     The size of static files is about the same, but we have an additional
     template with all frontend logic inside of it.
 
 6. Get back to Django project and run the server to view new page.
 
-    ```bash
-    cd ..
-    python manage.py runserver
-    ```
+   ```bash
+   cd ..
+   python manage.py runserver
+   ```
 
 7. Visit <http://localhost:8000/countries> and you'll see page
 as in the picture below.
