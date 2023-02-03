@@ -32,7 +32,6 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ page.title }}">
     <meta property="twitter:description" content="{{ page.meta }}">
-    <meta name="twitter:creator" content="@doXcrimes">
     <meta name="twitter:image" content="{{ 'assets/img/twitter-card.png' | absolute_url }}">
     <meta name="twitter:image:alt" content="{{ page.title }}">
     <script defer src="{{ 'assets/js/script.js' | relative_url }}"></script>
@@ -75,23 +74,30 @@
     <div class="card">
       <header>
         <a class="logo" href="/">super16</a>
-        <div class="spacer"></div>
-        <svg
-          viewBox="0 0 36 36"
-          onclick="toggle()"
+        <button
+          id="toggle-button"
+          aria-controls="toggle-nav-bar"
+          aria-expanded="false"
           aria-label="Toggle navigation menu"
-          width="36"
-          height="36"
+          onclick="toggle()"
+          type="button"
         >
-          <rect y="3" x="0" height="6" width="36" />
-          <rect y="15" x="0" height="6" width="36" />
-          <rect y="27" x="0" height="6" width="36" />
-        </svg>
+          <svg
+            aria-hidden="true"
+            height="36"
+            viewBox="0 0 36 36"
+            width="36"
+          >
+            <rect height="6" width="36" x="0" y="3" />
+            <rect height="6" width="36" x="0" y="15" />
+            <rect height="6" width="36" x="0" y="27" />
+          </svg>
+        </button>
         <hr />
         <nav id="toggle-nav-bar">
           <ul>
-            <li><a href="/about-me">About</a></li>
             <li><a href="/notes">Notes</a></li>
+            <li><a href="/about-me">About</a></li>
           </ul> 
         </nav>
       </header>

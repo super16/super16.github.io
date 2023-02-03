@@ -76,6 +76,7 @@ $breakpoint-large: 1400px;
     border-bottom: 12px solid black;
     display: flex;
     flex-flow: wrap;
+    justify-content: space-between;
     margin: 20px 25px;
     padding-bottom: 5px;
 
@@ -105,17 +106,29 @@ $breakpoint-large: 1400px;
       }
     }
 
-    svg {
-      fill: black;
+    button {
+      background-color: transparent;
+      background-repeat: no-repeat;
+      border: none;
+      outline: none;
 
       @media (min-width: $breakpoint-large) {
         display: none;
       }
+
+      svg {
+        fill: black;
+      }
+
+      @media (hover: hover) {
+        svg:hover {
+          fill: #800000;
+        }
+      }
     }
 
-    svg:hover {
+    button:hover {
       cursor: pointer;
-      fill: #800000;
     }
 
     hr {
@@ -169,6 +182,10 @@ $breakpoint-large: 1400px;
         display: flex;
         margin-left: 32px;
       }
+    }
+
+    @media (min-width: $breakpoint-large) {
+      justify-content: initial;
     }
   }
 
