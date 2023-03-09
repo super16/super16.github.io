@@ -1,5 +1,5 @@
 ---
-title:  "Improve Your Frontend App Performance with NGINX Compression"
+title: "Improve Your Frontend App Performance with NGINX Compression"
 slug: "nginx-compression-for-frontend-app"
 snippet: "Use gzip or Brotli compression to improve performance of the app."
 native: true

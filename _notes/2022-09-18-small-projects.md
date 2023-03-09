@@ -1,5 +1,5 @@
 ---
-title:  "Small Projects"
+title: "Small Projects"
 slug: "small-projects-i-mage-recently"
 snippet: "Collection of tiny pet-projects I made recently."
 native: true

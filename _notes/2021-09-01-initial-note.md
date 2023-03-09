@@ -1,5 +1,5 @@
 ---
-title:  "Initial note"
+title: "Initial note"
 slug: "initial-note"
 snippet: "Here's my blog with my thoughts, news and research sketches."
 meta: "Initial note. Here's my blog with my thoughts, news and research sketches."

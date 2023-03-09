@@ -17,7 +17,7 @@ web technologies and the humanities.
 
 ## Latest notes
 
-{% assign sorted = site.notes | reverse | slice: 0, 9 %}
+{% assign sorted = site.notes | reverse | slice: 0, 5 %}
 
 {% for note in sorted %}
 

@@ -6,6 +6,6 @@ Built with [Jekyll](https://jekyllrb.com/).
 
 ## Run Jekyll (Development)
 
-```bash
+```shell
 bundle exec jekyll serve
 ```
