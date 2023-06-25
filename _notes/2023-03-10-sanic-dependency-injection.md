@@ -88,8 +88,7 @@ docker run -d \
 
    # or with poetry
    
-   poetry new sanic-di
-   cd sanic-di
+   poetry new sanic-di && cd "$_"
    poetry add asyncpg redis sanic[ext] sqlalchemy
    ```
 
@@ -119,7 +118,7 @@ docker run -d \
 4. Fill the `sanic_di/models.py` file with `Item` model.
 
    Make sure that your project using `^2.0` version of `SQLAlchemy`,
-   here and further we use the new `SQLAlchemy` API.
+   here and further we use the new `SQLAlchemy` declarative API.
 
    ```python
    from sqlalchemy.orm import (
@@ -135,22 +134,21 @@ docker run -d \
 
    class Item(Base):
 
-       __tablename__ = "item"
+       __tablename__ = "items"
 
        item_id: Mapped[int] = mapped_column(primary_key=True)
-       title: Mapped[str]
+       title: Mapped[str] = mapped_column(unique=True)
 
        def serialize(self):
            return {"id": self.item_id, "title": self.title}
    ```
 
-4. Create classes for connections to PostgreSQL and Redis in
-   `sanic_di/database.py`.
+4. Create wrapper class for connection to PostgreSQL in `sanic_di/database.py`
+   with `SQLAlchemy`.
 
    ```python
    from typing import Type
 
-   from redis.asyncio import from_url, Redis
    from sqlalchemy import URL
    from sqlalchemy.ext.asyncio import (
        AsyncEngine,
@@ -184,30 +182,14 @@ docker run -d \
            async with self._connection.begin() as conn:
                await conn.run_sync(base.metadata.create_all)
 
-       @property
-       def create_session(self) -> async_sessionmaker[AsyncSession]:
-           return self._session_factory
-
-
-   class RedisConnection:
-
-       def __init__(self, config: Config) -> None:
-           self._url: str = f"redis://{config.REDIS_HOST}:{config.REDIS_PORT}"
-           self._redis: Redis = from_url(self._url)
-
-       @property
-       def session(self) -> Redis:
-           return self._redis
+       def create_session(self) -> AsyncSession:
+           return self._session_factory()
    ```
 
    There are two methods in `DatabaseConnection` class, one is to create
    initial migration for database (*don't do this for production code,*
    *migrations never should be run from the application*). Another method
-   is the function expression as property method for `SQLAlchemy` session
-   factory.
-
-   In `RedisConnection` we created property method helper to get `Redis`
-   object to call Redis native methods.
+   is the function expression for `SQLAlchemy` session factory.
 
 5. Add the basic part of application to `sanic_di/server.py`.
    Never mind all the unused imports at this point, we will use them later.
@@ -217,10 +199,12 @@ docker run -d \
    from string import ascii_letters
    from typing import Optional, TYPE_CHECKING
 
+   from redis.asyncio import Redis, from_url
    from sanic import Sanic, HTTPResponse
    from sanic.exceptions import NotFound, ServerError
    from sanic.response import empty, json, json_dumps
-   from sqlalchemy import insert, select
+   from sqlalchemy import select
+   from sqlalchemy.dialects.postgresql import insert
    from sqlalchemy.ext.asyncio import AsyncSession
    from ujson import loads
 
@@ -228,38 +212,47 @@ docker run -d \
        from sqlalchemy.engine import Result, ScalarResult
 
    from sanic_di.config import ConnectionsConfig
-   from sanic_di.database import DatabaseConnection, RedisConnection
+   from sanic_di.database import DatabaseConnection
    from sanic_di.models import Base, Item
 
 
    app = Sanic("dependency_injection_app")
-   app.update_config(ConnectionsConfig())
+   app.update_config(ConnectionsConfig)
 
 
    @app.before_server_start
    async def setup_db(application: Sanic, _) -> None:
 
+       # Initialize connection to PostgreSQL
        db_conn = DatabaseConnection(application.config)
        await db_conn.initial_migration(Base)
+       db_session: AsyncSession = db_conn.create_session()
 
-       redis_conn = RedisConnection(application.config)
+       # Initialize Redis client
+       redis_url = (
+           f"redis://{application.config.REDIS_HOST}:"
+           f"{application.config.REDIS_PORT}"
+       )
+       redis_client: Redis = from_url(redis_url)
 
-       session: AsyncSession = db_conn.create_session()
-       async with session.begin():
-           result: Result = await session.execute(
-               insert(Item).values(title="constant_item").returning(Item)
+       # Creating constant item and cache it
+       async with db_session.begin():
+           result: Result = await db_session.execute(
+               insert(Item).values(title="constant_item")
+               .on_conflict_do_nothing().returning(Item)
            )
            constant_item: Optional[Item] = result.scalar()
 
        if constant_item:
-           async with redis_conn.session as redis:
-               await redis.set(
+           async with redis_client:
+               await redis_client.set(
                    "constant_item",
                    json_dumps(constant_item.serialize())
                )
 
-       application.ext.dependency(db_conn)
-       application.ext.dependency(redis_conn)
+       # Adding DIs
+       application.ext.dependency(db_session)
+       application.ext.dependency(redis_client)
 
 
    @app.get("/ping")
@@ -301,10 +294,9 @@ the new ones. Append the following lines to the `sanic_di/server.py` file.
 
 ```python
 @app.get("/items")
-async def get_items(_, conn: DatabaseConnection) -> HTTPResponse:
-    session: AsyncSession = conn.create_session()
-    async with session.begin():
-        result: Result = await session.execute(select(Item))
+async def get_items(_, db_session: AsyncSession) -> HTTPResponse:
+    async with db_session.begin():
+        result: Result = await db_session.execute(select(Item))
         items: ScalarResult[Item] = result.scalars()
 
     if not items:
@@ -314,13 +306,12 @@ async def get_items(_, conn: DatabaseConnection) -> HTTPResponse:
 
 
 @app.post("/items")
-async def create_item(_, conn: DatabaseConnection) -> HTTPResponse:
-    session: AsyncSession = conn.create_session()
-    async with session.begin():
+async def create_item(_, db_session: AsyncSession) -> HTTPResponse:
+    async with db_session.begin():
         query = insert(Item).values(
             title="".join(choice(ascii_letters) for __ in range(10))
         ).returning(Item)
-        result: Result = await session.execute(query)
+        result: Result = await db_session.execute(query)
         created_item: Optional[Item] = result.scalar()
 
     if not created_item:
@@ -343,7 +334,7 @@ Try to create new `Item` object and get all the objects.
 curl -X POST http://127.0.0.1:8000/items | python3 -m json.tool
 
 # {
-#     "id": 2,
+#     "id": 3,
 #     "title": "sSyxhnCUrN"
 # }
 
@@ -355,7 +346,7 @@ curl http://127.0.0.1:8000/items | python3 -m json.tool
 #         "title": "constant_item"
 #     },
 #     {
-#         "id": 2,
+#         "id": 3,
 #         "title": "sSyxhnCUrN"
 #     }
 # ]
@@ -370,48 +361,46 @@ as an example to illustrate.
 @app.get("/cache/constant_item")
 async def cached_item(
     _,
-    cache: RedisConnection,
-    conn: DatabaseConnection,
+    redis_client: Redis,
+    db_session: AsyncSession,
 ) -> HTTPResponse:
-    async with cache.session as redis:
+    async with redis_client as redis:
         result = await redis.get("constant_item")
 
-    if result:
-        parsed_result: dict = loads(result)
-        parsed_result.update({"source": "cache"})
-        return json(parsed_result)
-    else:
-        """
-        Fallback if cache is empty, request query to database
-        and update the cache
-        """
-        session: AsyncSession = conn.create_session()
-        async with session.begin():
-            selected_item: Result = await session.execute(
-                select(Item).where(Item.title == "constant_item")
-            )
-            item: Optional[Item] = selected_item.scalar()
+        if not result:
+            """
+            Fallback if cache is empty, request query to database
+            and update the cache
+            """
+            async with db_session.begin():
+                selected_item: Result = await db_session.execute(
+                    select(Item).where(Item.title == "constant_item")
+                )
+                item: Optional[Item] = selected_item.scalar()
 
-        if not item:
-            error_message = "Can't found cached item"
-            raise NotFound(error_message)
+            if not item:
+                error_message = "Can't found cached item"
+                raise NotFound(error_message)
 
-        serialized_item = item.serialize()
+            serialized_item = item.serialize()
 
-        async with cache.session as redis:
             await redis.set(
                 "constant_item",
                 json_dumps(serialized_item)
             )
 
-        serialized_item.update({"source": "database"})
+            serialized_item.update({"source": "database"})
 
-        return json(serialized_item)
+            return json(serialized_item)
+        else:
+            parsed_result: dict = loads(result)
+            parsed_result.update({"source": "cache"})
+            return json(parsed_result)
 
 
 @app.delete("/cache")
-async def flush_cache(_, cache: RedisConnection) -> HTTPResponse:
-    async with cache.session as redis:
+async def flush_cache(_, redis_client: Redis) -> HTTPResponse:
+    async with redis_client as redis:
         await redis.flushall()
     return empty()
 ```
